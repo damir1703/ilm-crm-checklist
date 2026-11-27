@@ -389,7 +389,7 @@ document.getElementById("theme").onclick = () => {
   try { localStorage.setItem("theme", root.dataset.theme); } catch(e) {}
 };
 renderKpis(); renderGroups(); renderQs();
-if (location.hash) { const t = document.querySelector(location.hash); if (t) t.scrollIntoView(); }
+addEventListener("load", () => { if (location.hash) { const t = document.querySelector(location.hash); if (t) setTimeout(() => t.scrollIntoView(), 50); } });
 </script>
 </body>
 </html>
