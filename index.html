@@ -50,7 +50,9 @@ h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:10px 0 14px;letter-spac
 .bar i{display:block;height:100%}
 .callout{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--n);border-radius:12px;padding:16px 18px;margin:24px 0}
 .callout h3{margin:0 0 8px;font-size:16px}
-.callout ol{margin:0;padding-left:20px;color:var(--t2)}
+.callout ol,.callout ul{margin:0;padding-left:20px;color:var(--t2)}
+.callout.dec{border-left-color:var(--y)}
+.ans{background:var(--yb);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--t1);margin-bottom:8px}
 .callout li{margin:4px 0}
 section{padding:30px 0 6px;scroll-margin-top:60px}
 h2{font-size:24px;margin:0 0 6px;letter-spacing:-.01em}
@@ -112,20 +114,34 @@ html[lang=uz] .qq .ru{display:none}
   <div class="hero" id="summary">
     <div class="eyebrow" data-i="eyebrow">Ilm Markazi · переход отдела продаж</div>
     <h1 data-i="h1">amoCRM → Ilm CRM: что уже есть, а что нужно сделать</h1>
-    <p class="lead" data-i="lead">70 функций amoCRM и их статус в нашей системе. Главное: пока amo остаётся «трубой» для лидов, звонков и роботов, всё работает, если Ilm CRM пишет обратно в amo этап, причину отказа и ответственного.</p>
+    <p class="lead" data-i="lead">70 функций amoCRM и их статус в нашей системе. Решение РОПа 27.11: Ilm CRM становится полной копией amoCRM, а amo остаётся только для чтения как запасной вариант.</p>
     <div class="meta" data-i="meta">Состояние на 27.11.2026. Источник: аудит аккаунта amoCRM (только чтение) и код Ilm CRM. В браузере вручную не проверялось.</div>
 
     <div class="kpis" id="kpis"></div>
     <div class="bar" id="bar"></div>
     <div class="meta" id="barnote"></div>
 
+    <div class="callout dec">
+      <h3 data-i="dech">Решения РОПа от 27.11</h3>
+      <ul data-i="decul">
+        <li>Ilm CRM — полная копия amoCRM: воронки и этапы, карточка со всеми полями, контакты, теги, задачи, imBox и чаты, звонки Sipuni, Telegram-бот, SMS Eskiz, лимиты Uzum/Alif, автоматизации и роботы, история сделок.</li>
+        <li>Переносим три воронки: «Продажа» — отделу продаж, «До Академ» — её ответственному, «Академ» — академическому отделу. Остальные восемь пока не переносим.</li>
+        <li>Путь сделки: «Успешно» в «Продаже» → «До Академ» → ответственным ставят ассистента академического отдела → группа набрана → «Академ».</li>
+        <li>Наши разделы остаются: Mening oyligim, Mening kunim, Vazifalar, Reyting, Haftalik chellenj, Ro'yxatga olish, Guruhlar.</li>
+        <li>Сами ничего не удаляем — только по отдельному ТЗ. Если amo и ТЗ расходятся, делаем по ТЗ.</li>
+        <li>amoCRM — только чтение, остаётся запасным вариантом.</li>
+        <li>Сроки: перенос данных в ночь на 30.11, с 1.12 в Ilm CRM работает команда из 3–4 менеджеров.</li>
+      </ul>
+    </div>
+
     <div class="callout">
       <h3 data-i="callh">До перехода обязательно</h3>
       <ol data-i="callol">
-        <li><b>№66</b> — включить запись Ilm CRM → amo (этап, отказ, ответственный). Готово в коде, ждёт выкатки и пробного запуска.</li>
-        <li><b>№30</b> — заполнить внутренние номера Sipuni для каждого менеджера и сделать тестовый звонок.</li>
-        <li><b>№38</b> — решить, где менеджеры отвечают в чатах (в amo ≥ 4000 входящих за 7 дней).</li>
-        <li><b>№67</b> — назначить день, когда выключаем тестовый режим Ilm CRM.</li>
+        <li><b>30.11, ночь</b> — перенести из amo данные трёх воронок: сделки со всеми полями, контакты, теги, задачи, примечания, история.</li>
+        <li><b>№2, №47</b> — воронки «До Академ» и «Академ», переход «Успешно» → «До Академ» внутри Ilm CRM.</li>
+        <li><b>№30</b> — внутренние номера Sipuni для каждого менеджера и тестовый звонок.</li>
+        <li><b>№38</b> — imBox и чаты в Ilm CRM.</li>
+        <li><b>№41</b> — SMS через Eskiz из Ilm CRM.</li>
       </ol>
     </div>
   </div>
@@ -158,7 +174,7 @@ html[lang=uz] .qq .ru{display:none}
     <div class="tpl" id="tpl"></div>
   </section>
 
-  <footer data-i="foot">Ilm Markazi · Ilm CRM · 27.11.2026. В отчёте нет персональных данных клиентов, ключей и адресов интеграций.</footer>
+  <footer data-i="foot">Ilm Markazi · Ilm CRM · обновлено 27.11.2026 по решениям РОПа. В отчёте нет персональных данных клиентов, ключей и адресов интеграций.</footer>
 </main>
 <div class="toast" id="toast"></div>
 
@@ -177,7 +193,7 @@ const COLORS = {y:"var(--y)",p:"var(--p)",n:"var(--n)",nq:"var(--n)",q:"var(--q)
 const G = [
  ["Сделки и воронки", [
   [1,"Воронка «Продажа» (10 этапов)","y","Канбан с теми же этапами"],
-  [2,"Ещё 10 воронок: До Академ, Академ, Второй и Третий месяц, Переподажа, Набор группы, Найм, Kasbly, Маркетплейс, Bepul kurs","nq","В Ilm CRM только «Продажа». Какие воронки нужны менеджерам?"],
+  [2,"Ещё 10 воронок: До Академ, Академ, Второй и Третий месяц, Переподажа, Набор группы, Найм, Kasbly, Маркетплейс, Bepul kurs","n","Решение РОПа: переносим «Продажа», «До Академ», «Академ». Остальные 8 — пока нет. В Ilm CRM сейчас только «Продажа»"],
   [3,"Перетаскивание сделки по этапам","y",""],
   [4,"Список и таблица сделок","y","Вид «Ro'yxat»"],
   [5,"Создание сделки вручную","y","С проверкой дубля по телефону"],
@@ -191,7 +207,7 @@ const G = [
   [13,"Теги","p","Видны, по ним работает фильтр. Ставить и снимать из Ilm CRM нельзя"],
   [14,"Доп. поля сделки (127 в amo)","p","В карточке ключевые: источник, кампания, Uzum, Alif, тариф. Какие ещё нужны?"],
   [15,"Бюджет (сумма)","y",""],
-  [16,"Неразобранное","na","Пока amo «труба», его разбирает amo"],
+  [16,"Неразобранное","n","Полная копия amo: нужно своё «Неразобранное» в Ilm CRM"],
   [17,"Файлы в карточке","p","Только чек оплаты (фото или PDF)"],
   [18,"Другие сделки этого же клиента","y",""]
  ]],
@@ -215,24 +231,24 @@ const G = [
   [31,"Входящие (≈970 за 7 дней)","p","События Sipuni приходят. На ответственного звонок направляет Sipuni через amo — проверить схему"],
   [32,"Запись звонка в карточке","p","Ссылка есть. Прослушивания внутри CRM нет"],
   [33,"Пропущенный → задача «перезвонить»","y",""],
-  [34,"Sipuni создаёт сделку на новый номер","na","Делает amo, продолжит работать"],
+  [34,"Sipuni создаёт сделку на новый номер","n","amo только чтение: сделку на новый номер должна создавать Ilm CRM"],
   [35,"ИИ-разбор звонка (расшифровка и оценка)","p","Есть в карточке ученика. Для сделки — вопрос"],
   [36,"Виджет «Мои звонки» (≈20 звонков за 7 дней)","q","Отключить?"],
   [37,"Рейтинг и отчёты по звонкам","y","Звонки через amo"]
  ]],
  ["Чаты и сообщения", [
-  [38,"Входящие чаты через Wazzup (≥ 4000 за 7 дней)","nq","Самый большой пробел: чаты Ilm CRM пока демо. Пока отвечают в amo?"],
+  [38,"Входящие чаты через Wazzup (≥ 4000 за 7 дней)","n","Решение РОПа: imBox и чаты переносим в Ilm CRM. Сейчас чаты — демо"],
   [39,"Шаблоны сообщений (9 в amo)","y","РОП правит сам"],
-  [40,"Salesbot «Zakrit besedi»","nq","Остаётся в amo. Нужен ли свой?"],
-  [41,"SMS «не взял»","p","Кнопка в тестовом режиме. После записи в amo SMS шлёт робот amo"],
+  [40,"Salesbot «Zakrit besedi»","n","Решение РОПа: роботы переносим в Ilm CRM"],
+  [41,"SMS «не взял»","p","Решение РОПа: SMS через Eskiz из Ilm CRM. Кнопка есть, но в тестовом режиме"],
   [42,"Telegram-бот школы в чатах","p","Подключение есть, работает как демо"],
   [43,"Примечания в сделке","y",""],
   [44,"Email","q","Используется ли вообще?"]
  ]],
  ["Автоматизация и интеграции", [
-  [45,"Распределение лидов (Taqsimlovchi)","p","Работает, но занятость берёт по этапу amo — нужен №66"],
+  [45,"Распределение лидов (Taqsimlovchi)","p","amo только чтение: занятость менеджеров пилотной команды брать из Ilm CRM"],
   [46,"Контроль дублей","p","В Ilm CRM задача «возможный дубль». Объединения дублей нет"],
-  [47,"Роботы на «Успешно»: LC-UP, перенос в «До Академ», Salesbot","na","Остаются в amo, сработают через №66"],
+  [47,"Роботы на «Успешно»: LC-UP, перенос в «До Академ», Salesbot","n","amo только чтение: «Успешно» → «До Академ», LC-UP и Salesbot делаем в Ilm CRM"],
   [48,"≈25 вебхуков amo: Sipuni ×7, Wazzup, Puzzlebot ×3, emfy, bizandsoft, roydis, Zapier, NOVA, uzum-checker, salesai, Facebook, нормализатор телефонов","q","Остаются в amo. Какие из них ещё живые?"],
   [49,"Автоматический «Успешно» по таблице продаж","p","В тестовом режиме"],
   [50,"Нормализация телефонов","na","Остаётся в amo"],
@@ -251,29 +267,31 @@ const G = [
   [59,"Рейтинг менеджеров","y",""],
   [60,"Скорость первого звонка","y",""],
   [61,"Утренний и недельный отчёт","y",""],
-  [62,"Отчёты продаж, когорты, акции, Telegram-реклама","y","Считают по этапам amo — нужен №66"],
+  [62,"Отчёты продаж, когорты, акции, Telegram-реклама","p","Для пилотной команды считать по этапам Ilm CRM"],
   [63,"Зарплата, бонусы, челленджи, ТВ-экран","y","В amo такого нет"]
  ]],
  ["Пользователи, права, переход", [
   [64,"Роли (8 в amo) и отделы (9 групп)","p","В Ilm CRM роли проще: менеджер, РОП, ассистент. Нужны ли отделы со своими руководителями?"],
   [65,"Новый менеджер","p","Логины выдаёт бот, но менеджера надо заводить и в amo: связь по имени"],
-  [66,"Запись этапа, отказа и ответственного обратно в amo","p","Готово в коде, режим «выкл». Ждёт выкатки и пробного запуска"],
-  [67,"Тестовый режим Ilm CRM","q","В какой день выключаем?"],
+  [66,"Запись этапа, отказа и ответственного обратно в amo","na","Решение РОПа: amoCRM только чтение. Запись в amo не включаем"],
+  [67,"Тестовый режим Ilm CRM","p","Перенос данных в ночь на 30.11, с 1.12 в Ilm CRM работает команда из 3–4 менеджеров"],
   [68,"Обновление из amo раз в 10 минут","y","Задержка до 10 минут"],
   [69,"Журнал действий","y",""],
   [70,"Мобильная версия","y","Mini App в Telegram"]
  ]]
 ];
-const KEY = new Set([30,38,66,67]);
+const KEY = new Set([2,30,38,41,47]);
 
 const UZ_STATIC = {
  nav1:"Xulosa", nav2:"Ro'yxat", nav3:"ROP uchun savollar", nav4:"TZ shabloni", theme:"Mavzu",
  eyebrow:"Ilm Markazi · sotuv bo'limining o'tishi",
  h1:"amoCRM → Ilm CRM: nima bor va nima qilish kerak",
- lead:"amoCRM'ning 70 ta funksiyasi va ularning bizning tizimdagi holati. Asosiysi: amo lidlar, qo'ng'iroqlar va robotlar uchun «quvur» bo'lib qolar ekan, Ilm CRM amo'ga bosqich, rad etish sababi va mas'ulni qaytarib yozsa, hammasi ishlaydi.",
+ lead:"amoCRM'ning 70 ta funksiyasi va ularning bizning tizimdagi holati. ROPning 27.11 qarori: Ilm CRM amoCRM'ning to'liq nusxasi bo'ladi, amo esa zaxira sifatida faqat o'qish uchun qoladi.",
  meta:"27.11.2026 holatiga. Manba: amoCRM akkauntining auditi (faqat o'qish) va Ilm CRM kodi. Brauzerda qo'lda tekshirilmagan.",
+ dech:"ROPning 27.11 qarorlari",
+ decul:"<li>Ilm CRM — amoCRM'ning to'liq nusxasi: voronkalar va bosqichlar, barcha maydonli kartochka, kontaktlar, teglar, vazifalar, imBox va chatlar, Sipuni qo'ng'iroqlari, Telegram-bot, Eskiz SMS, Uzum/Alif limitlari, avtomatlashtirish va robotlar, bitimlar tarixi.</li><li>Uchta voronka ko'chiriladi: «Продажа» — sotuv bo'limiga, «До Академ» — uning mas'uliga, «Академ» — akademik bo'limga. Qolgan sakkiztasi hozircha ko'chirilmaydi.</li><li>Bitim yo'li: «Продажа»da «Успешно» → «До Академ» → akademik bo'lim assistenti mas'ul qilinadi → guruh yig'ildi → «Академ».</li><li>Bizning bo'limlar qoladi: Mening oyligim, Mening kunim, Vazifalar, Reyting, Haftalik chellenj, Ro'yxatga olish, Guruhlar.</li><li>O'zimiz hech narsani o'chirmaymiz — faqat alohida TZ bo'yicha. amo va TZ farq qilsa, TZ bo'yicha qilamiz.</li><li>amoCRM — faqat o'qish uchun, zaxira sifatida qoladi.</li><li>Muddat: ma'lumotlar 30.11 kechasi ko'chiriladi, 1.12 dan Ilm CRM'da 3–4 menejerlik jamoa ishlaydi.</li>",
  callh:"O'tishdan oldin albatta",
- callol:"<li><b>№66</b> — Ilm CRM → amo yozishni yoqish (bosqich, rad etish, mas'ul). Kodda tayyor, chiqarish va sinovni kutmoqda.</li><li><b>№30</b> — har bir menejer uchun Sipuni ichki raqamini kiritish va sinov qo'ng'irog'ini qilish.</li><li><b>№38</b> — menejerlar chatlarga qayerda javob berishini hal qilish (amo'da 7 kunda ≥ 4000 ta kiruvchi xabar).</li><li><b>№67</b> — Ilm CRM test rejimini o'chiradigan kunni belgilash.</li>",
+ callol:"<li><b>30.11, kechasi</b> — amo'dan uchta voronka ma'lumotlarini ko'chirish: barcha maydonli bitimlar, kontaktlar, teglar, vazifalar, izohlar, tarix.</li><li><b>№2, №47</b> — «До Академ» va «Академ» voronkalari, Ilm CRM ichida «Успешно» → «До Академ» o'tishi.</li><li><b>№30</b> — har bir menejer uchun Sipuni ichki raqami va sinov qo'ng'irog'i.</li><li><b>№38</b> — imBox va chatlar Ilm CRM'da.</li><li><b>№41</b> — Ilm CRM'dan Eskiz orqali SMS.</li>",
  listh:"Nazorat ro'yxati",
  listsub:"Faqat shu holatdagi bandlarni qoldirish uchun yuqoridagi holat kartochkasini bosing.",
  roph:"ROP uchun savollar — bugun javob kerak",
@@ -281,12 +299,12 @@ const UZ_STATIC = {
  copyq:"Savollarni nusxalash", copytpl:"TZ shablonini nusxalash",
  tzh:"TZ shabloni",
  tzsub:"ROP har bir savol uchun bittadan to'ldiradi va Telegram'da yuboradi.",
- foot:"Ilm Markazi · Ilm CRM · 27.11.2026. Hisobotda mijozlarning shaxsiy ma'lumotlari, kalitlar va integratsiya manzillari yo'q."
+ foot:"Ilm Markazi · Ilm CRM · 27.11.2026 da ROP qarorlari bo'yicha yangilandi. Hisobotda mijozlarning shaxsiy ma'lumotlari, kalitlar va integratsiya manzillari yo'q."
 };
 const UZ_GROUPS = ["Bitimlar va voronkalar","Kontaktlar va boshqa obyektlar","Vazifalar","Qo'ng'iroqlar","Chatlar va xabarlar","Avtomatlashtirish va integratsiyalar","Lidlar va manbalar","Analitika va hisobotlar","Foydalanuvchilar, huquqlar, o'tish"];
 const UZ_ITEMS = {
  1:["«Продажа» voronkasi (10 bosqich)","Xuddi shu bosqichlar bilan kanban"],
- 2:["Yana 10 ta voronka: До Академ, Академ, Второй va Третий месяц, Переподажа, Набор группы, Найм, Kasbly, Маркетплейс, Bepul kurs","Ilm CRM'da faqat «Продажа». Menejerlarga qaysi voronkalar kerak?"],
+ 2:["Yana 10 ta voronka: До Академ, Академ, Второй va Третий месяц, Переподажа, Набор группы, Найм, Kasbly, Маркетплейс, Bepul kurs","ROP qarori: «Продажа», «До Академ», «Академ» ko'chiriladi. Qolgan 8 tasi — hozircha yo'q. Ilm CRM'da hozir faqat «Продажа»"],
  3:["Bitimni bosqichlar bo'ylab sudrab o'tkazish",""],
  4:["Bitimlar ro'yxati va jadvali","«Ro'yxat» ko'rinishi"],
  5:["Bitimni qo'lda yaratish","Telefon bo'yicha dublikat tekshiruvi bilan"],
@@ -300,7 +318,7 @@ const UZ_ITEMS = {
  13:["Teglar","Ko'rinadi, ular bo'yicha filtr ishlaydi. Ilm CRM'dan qo'yib-olib bo'lmaydi"],
  14:["Bitimning qo'shimcha maydonlari (amo'da 127 ta)","Kartochkada asosiylari: manba, kampaniya, Uzum, Alif, tarif. Yana qaysilari kerak?"],
  15:["Byudjet (summa)",""],
- 16:["Saralanmaganlar (Неразобранное)","amo «quvur» ekan, uni amo saralaydi"],
+ 16:["Saralanmaganlar (Неразобранное)","amo'ning to'liq nusxasi: Ilm CRM'da o'z «Неразобранное» bo'limi kerak"],
  17:["Kartochkadagi fayllar","Faqat to'lov cheki (rasm yoki PDF)"],
  18:["Shu mijozning boshqa bitimlari",""],
  19:["Bir nechta telefonli kontakt",""],
@@ -318,20 +336,20 @@ const UZ_ITEMS = {
  31:["Kiruvchi qo'ng'iroqlar (7 kunda ≈970)","Sipuni hodisalari keladi. Mas'ulga qo'ng'iroqni Sipuni amo orqali yo'naltiradi — sxemani tekshirish kerak"],
  32:["Kartochkada qo'ng'iroq yozuvi","Havola bor. CRM ichida tinglash yo'q"],
  33:["O'tkazib yuborilgan → «qayta qo'ng'iroq» vazifasi",""],
- 34:["Sipuni yangi raqamga bitim yaratadi","amo qiladi, ishlashda davom etadi"],
+ 34:["Sipuni yangi raqamga bitim yaratadi","amo faqat o'qish uchun: yangi raqamga bitimni Ilm CRM yaratishi kerak"],
  35:["Qo'ng'iroqni sun'iy intellekt tahlili (matn va baho)","O'quvchi kartochkasida bor. Bitim uchun — savol"],
  36:["«Мои звонки» vidjeti (7 kunda ≈20 qo'ng'iroq)","O'chiramizmi?"],
  37:["Qo'ng'iroqlar bo'yicha reyting va hisobotlar","amo orqali kelgan qo'ng'iroqlar"],
- 38:["Wazzup orqali kiruvchi chatlar (7 kunda ≥ 4000)","Eng katta bo'shliq: Ilm CRM chatlari hozircha demo. Hozircha amo'da javob beriladimi?"],
+ 38:["Wazzup orqali kiruvchi chatlar (7 kunda ≥ 4000)","ROP qarori: imBox va chatlar Ilm CRM'ga ko'chiriladi. Hozir chatlar — demo"],
  39:["Xabar shablonlari (amo'da 9 ta)","ROP o'zi tahrirlaydi"],
- 40:["«Zakrit besedi» Salesbot","amo'da qoladi. O'zimiznikisi kerakmi?"],
- 41:["«Ko'tarmadi» SMS","Tugma test rejimida. amo'ga yozilgandan keyin SMSni amo roboti yuboradi"],
+ 40:["«Zakrit besedi» Salesbot","ROP qarori: robotlar Ilm CRM'ga ko'chiriladi"],
+ 41:["«Ko'tarmadi» SMS","ROP qarori: SMS Ilm CRM'dan Eskiz orqali. Tugma bor, lekin test rejimida"],
  42:["Chatlarda maktabning Telegram-boti","Ulanish bor, demo sifatida ishlaydi"],
  43:["Bitimdagi izohlar",""],
  44:["Email","Umuman ishlatiladimi?"],
- 45:["Lidlarni taqsimlash (Taqsimlovchi)","Ishlaydi, lekin bandlikni amo bosqichidan oladi — №66 kerak"],
+ 45:["Lidlarni taqsimlash (Taqsimlovchi)","amo faqat o'qish uchun: pilot jamoa menejerlarining bandligini Ilm CRM'dan olish kerak"],
  46:["Dublikatlar nazorati","Ilm CRM'da «ehtimoliy dublikat» vazifasi. Dublikatlarni birlashtirish yo'q"],
- 47:["«Успешно» bosqichidagi robotlar: LC-UP, «До Академ»ga o'tkazish, Salesbot","amo'da qoladi, №66 orqali ishga tushadi"],
+ 47:["«Успешно» bosqichidagi robotlar: LC-UP, «До Академ»ga o'tkazish, Salesbot","amo faqat o'qish uchun: «Успешно» → «До Академ», LC-UP va Salesbot Ilm CRM'da qilinadi"],
  48:["amo'da ≈25 ta vebxuk: Sipuni ×7, Wazzup, Puzzlebot ×3, emfy, bizandsoft, roydis, Zapier, NOVA, uzum-checker, salesai, Facebook, telefon normalizatori","amo'da qoladi. Qaysilari hali ishlayapti?"],
  49:["Sotuvlar jadvali bo'yicha avtomatik «Успешно»","Test rejimida"],
  50:["Telefonlarni normallashtirish","amo'da qoladi"],
@@ -346,12 +364,12 @@ const UZ_ITEMS = {
  59:["Menejerlar reytingi",""],
  60:["Birinchi qo'ng'iroq tezligi",""],
  61:["Ertalabki va haftalik hisobot",""],
- 62:["Sotuv hisobotlari, kogortalar, aksiyalar, Telegram-reklama","amo bosqichlari bo'yicha hisoblaydi — №66 kerak"],
+ 62:["Sotuv hisobotlari, kogortalar, aksiyalar, Telegram-reklama","Pilot jamoa uchun Ilm CRM bosqichlari bo'yicha hisoblash kerak"],
  63:["Ish haqi, bonuslar, chellenjlar, TV-ekran","amo'da bunday yo'q"],
  64:["Rollar (amo'da 8 ta) va bo'limlar (9 guruh)","Ilm CRM'da rollar soddaroq: menejer, ROP, assistent. O'z rahbari bo'lgan bo'limlar kerakmi?"],
  65:["Yangi menejer","Loginlarni bot beradi, lekin menejerni amo'da ham ochish kerak: bog'lanish ism bo'yicha"],
- 66:["Bosqich, rad etish va mas'ulni amo'ga qaytarib yozish","Kodda tayyor, rejim «o'chiq». Chiqarish va sinovni kutmoqda"],
- 67:["Ilm CRM test rejimi","Qaysi kuni o'chiramiz?"],
+ 66:["Bosqich, rad etish va mas'ulni amo'ga qaytarib yozish","ROP qarori: amoCRM faqat o'qish uchun. amo'ga yozish yoqilmaydi"],
+ 67:["Ilm CRM test rejimi","Ma'lumotlar 30.11 kechasi ko'chiriladi, 1.12 dan Ilm CRM'da 3–4 menejerlik jamoa ishlaydi"],
  68:["amo'dan har 10 daqiqada yangilanish","10 daqiqagacha kechikish"],
  69:["Amallar jurnali",""],
  70:["Mobil versiya","Telegram'dagi Mini App"]
@@ -361,7 +379,13 @@ document.querySelectorAll("[data-i]").forEach(el => RU_STATIC[el.dataset.i] = el
 
 
 const Q = [
- {u:"Menejerlar mijozlar chatiga qayerda javob beradi: amoCRM'da qoladimi yoki Ilm CRM'ga o'tamizmi? Qaysi kanallar: WhatsApp, Telegram, Instagram?",
+ {u:"«До Академ» voronkasiga siz (ROP) ham kirasizmi yoki faqat uning mas'uli?",
+  r:"Нужен ли РОПу доступ к «До Академ» или только её ответственному",
+  tz:"«До Академ»ni kim ko'radi va kim o'zgartiradi: ism yoki rol bo'yicha ro'yxat.", refs:[2,64], pri:true},
+ {u:"1.12 dan Ilm CRM'da ishlaydigan 3–4 menejer kimlar? Ularga yangi lidlar qanday keladi: amo'dagi taqsimlovchi orqalimi yoki Ilm CRM'da alohida navbatmi?",
+  r:"Кто входит в пилотную команду и как ей приходят новые лиды",
+  tz:"Menejerlar ismlari; lidlar qaysi manbadan va qaysi tartibda beriladi; ular amo'da ham ishlaydimi.", refs:[45,67], pri:true},
+ {u:"Menejerlar mijozlar chatiga qayerda javob beradi: amoCRM'da qoladimi yoki Ilm CRM'ga o'tamizmi? Qaysi kanallar: WhatsApp, Telegram, Instagram?", a:{ru:"Чаты и imBox переносим в Ilm CRM. Каналы и сроки ответа — всё ещё нужны в ТЗ.", uz:"Chatlar va imBox Ilm CRM'ga ko'chiriladi. Kanallar va javob muddati — TZ'da hali kerak."},
   r:"Где менеджеры отвечают в чатах и какие каналы нужны",
   tz:"Kanallar ro'yxati, har kanal bo'yicha kunlik xabarlar soni, kim javob beradi, javob berish muddati (masalan, 5 daqiqa).", refs:[38,42], pri:true},
  {u:"Har bir menejerning Sipuni ichki raqami qaysi? To'liq ro'yxat kerak.",
@@ -370,10 +394,10 @@ const Q = [
  {u:"Kiruvchi qo'ng'iroq qayerga tushadi: mas'ul menejergami, umumiy navbatgami? Ish vaqtidan tashqarida nima bo'ladi?",
   r:"Схема входящих звонков",
   tz:"Kiruvchi qo'ng'iroq sxemasi: kim birinchi, kim keyin, necha soniyadan keyin o'tadi, kechqurun va dam olish kunlari.", refs:[31,33], pri:true},
- {u:"Test rejimini qaysi kuni o'chiramiz? Sinov uchun 5–10 ta bitimni va 1–2 menejerni tanlang.",
+ {u:"Test rejimini qaysi kuni o'chiramiz? Sinov uchun 5–10 ta bitimni va 1–2 menejerni tanlang.", a:{ru:"Перенос данных в ночь на 30.11, с 1.12 работает команда из 3–4 менеджеров. Нужны их имена.", uz:"Ma'lumotlar 30.11 kechasi ko'chiriladi, 1.12 dan 3–4 menejerlik jamoa ishlaydi. Ularning ismlari kerak."},
   r:"День выключения тестового режима и пилот на 5–10 сделках",
   tz:"Sana va soat, pilot menejerlar ismlari, pilot qancha kun davom etadi, nima bo'lsa to'xtatamiz.", refs:[66,67], pri:true},
- {u:"Ilm CRM'da qaysi voronkalar kerak? Hozir faqat «Продажа» bor.",
+ {u:"Ilm CRM'da qaysi voronkalar kerak? Hozir faqat «Продажа» bor.", a:{ru:"«Продажа», «До Академ», «Академ». Остальные — пока нет.", uz:"«Продажа», «До Академ», «Академ». Qolganlari — hozircha yo'q."},
   r:"Какие воронки кроме «Продажи» нужны в Ilm CRM",
   tz:"Har voronka uchun: kim ishlaydi, bosqichlar ro'yxati, bitim qaysi voronkadan qaysiga o'tadi.", refs:[2]},
  {u:"Bitim kartochkasida yana qaysi maydonlar ko'rinishi va tahrirlanishi kerak?",
@@ -400,7 +424,7 @@ const Q = [
  {u:"Dublikat bitimlar bilan nima qilamiz: birlashtiramizmi yoki yopamizmi? Qaysi bitim qoladi?",
   r:"Что делать с дублями",
   tz:"Qoida: dublikat qanday aniqlanadi (telefon, ism), qaysi bitim asosiy, qaysi ma'lumot ko'chiriladi.", refs:[46]},
- {u:"«Zakrit besedi» Salesbot nima qiladi va u kerakmi?",
+ {u:"«Zakrit besedi» Salesbot nima qiladi va u kerakmi?", a:{ru:"Роботы переносим в Ilm CRM. Что именно делает бот — всё ещё нужно описать.", uz:"Robotlar Ilm CRM'ga ko'chiriladi. Bot aynan nima qilishini hali yozish kerak."},
   r:"Что делает Salesbot и нужен ли он",
   tz:"Bot qachon ishga tushadi, mijozga nima yozadi, natija nima bo'ladi.", refs:[40]},
  {u:"«Ko'tarmadi» SMS matni va qachon yuboriladi — hozirgidek qoladimi?",
@@ -467,11 +491,11 @@ function renderGroups(){
   }).join("");
 }
 function renderQs(){
-  document.getElementById("qcount").textContent = LANG === "uz" ? `${Q.length} ta savol · birinchi 4 tasi — bugunoq` : `${Q.length} вопроса · первые 4 — сегодня`;
+  document.getElementById("qcount").textContent = LANG === "uz" ? `${Q.length} ta savol · ${Q.filter(q => q.a).length} tasiga javob bor` : `${Q.length} вопрос · на ${Q.filter(q => q.a).length} есть ответ`;
   document.getElementById("qs").innerHTML = Q.map((q,i) => `<div class="qq"><div class="qn">${i+1}</div><div>
     <h4>${esc(q.u)}${q.pri?`<span class="tag-pri">${LANG === "uz" ? "BUGUN" : "СЕГОДНЯ"}</span>`:''}</h4>
     <p class="ru">${esc(q.r)}</p>
-    <div class="tz"><b>${LANG === "uz" ? "TZ'da nima bo'lishi kerak:" : "Что нужно в ТЗ:"}</b> ${esc(q.tz)}</div>
+    ${q.a ? `<div class="ans"><b>✅ ${LANG === "uz" ? "ROP javobi" : "Ответ РОПа"}:</b> ${esc(q.a[LANG])}</div>` : ""}<div class="tz"><b>${LANG === "uz" ? "TZ'da nima bo'lishi kerak:" : "Что нужно в ТЗ:"}</b> ${esc(q.tz)}</div>
     <div class="refs">${LANG === "uz" ? "Ro'yxat" : "Чек-лист"}: ${q.refs.map(n => `<a href="#i${n}">№${n}</a>`).join(", ")}</div></div></div>`).join("");
   document.getElementById("tpl").textContent = TPL;
 }
