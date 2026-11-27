@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>amoCRM → Ilm CRM</title>
+<meta name="description" content="Чек-лист перехода отдела продаж Ilm Markazi из amoCRM в Ilm CRM: 70 функций и вопросы РОПу">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F9;--card:#FFFFFF;--t1:#14161A;--t2:#4B5260;--t3:#8A919E;--line:#E4E7EC;--soft:#F0F2F5;
+  --acc:#2F5BEA;--y:#14A05B;--p:#D99A06;--n:#E0453A;--q:#7C5CFF;--na:#9AA1AD;
+  --yb:#14A05B14;--pb:#D99A0618;--nb:#E0453A14;--qb:#7C5CFF14;--nab:#9AA1AD14;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1115;--card:#171A20;--t1:#ECEEF2;--t2:#B4BAC5;--t3:#7D8592;--line:#272B33;--soft:#1E2229;
+  --acc:#6E8EFF;--y:#34C77B;--p:#F2B530;--n:#FF6B60;--q:#A08BFF;--na:#7D8592;
+  --yb:#34C77B1f;--pb:#F2B5301f;--nb:#FF6B601f;--qb:#A08BFF1f;--nab:#7D85921f;}}
+:root[data-theme="dark"]{
+  --bg:#0F1115;--card:#171A20;--t1:#ECEEF2;--t2:#B4BAC5;--t3:#7D8592;--line:#272B33;--soft:#1E2229;
+  --acc:#6E8EFF;--y:#34C77B;--p:#F2B530;--n:#FF6B60;--q:#A08BFF;--na:#7D8592;
+  --yb:#34C77B1f;--pb:#F2B5301f;--nb:#FF6B601f;--qb:#A08BFF1f;--nab:#7D85921f;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--t1);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--acc)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;gap:6px;align-items:center;height:52px;overflow-x:auto;scrollbar-width:none}
+header.top .wrap::-webkit-scrollbar{display:none}
+.brand{font-weight:800;margin-right:10px;white-space:nowrap}
+.nav a{color:var(--t2);text-decoration:none;font-size:13.5px;font-weight:500;padding:6px 10px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:var(--soft);color:var(--t1)}
+.theme{margin-left:auto;border:1px solid var(--line);background:var(--card);color:var(--t2);border-radius:8px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
+.hero{padding:56px 0 28px}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:10px 0 14px;letter-spacing:-.02em}
+.lead{font-size:17px;color:var(--t2);max-width:760px;margin:0}
+.meta{color:var(--t3);font-size:13px;margin-top:14px}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:28px 0 12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.kpi:hover{border-color:var(--t3)}
+.kpi.on{outline:2px solid var(--acc);outline-offset:-1px}
+.kpi b{display:block;font-size:28px;line-height:1;font-weight:800}
+.kpi span{display:block;font-size:12.5px;color:var(--t2);margin-top:8px}
+.bar{display:flex;height:10px;border-radius:99px;overflow:hidden;background:var(--soft);margin:6px 0 4px}
+.bar i{display:block;height:100%}
+.callout{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--n);border-radius:12px;padding:16px 18px;margin:24px 0}
+.callout h3{margin:0 0 8px;font-size:16px}
+.callout ol{margin:0;padding-left:20px;color:var(--t2)}
+.callout li{margin:4px 0}
+section{padding:30px 0 6px;scroll-margin-top:60px}
+h2{font-size:24px;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:var(--t2);margin:0 0 16px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--t2);margin:0 0 18px}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.st.y{color:var(--y);background:var(--yb)}.st.p{color:var(--p);background:var(--pb)}.st.n,.st.nq{color:var(--n);background:var(--nb)}
+.st.q{color:var(--q);background:var(--qb)}.st.na{color:var(--na);background:var(--nab)}
+.grp{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:0 0 14px;overflow:hidden}
+.grp h3{margin:0;padding:14px 16px;font-size:15.5px;display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--line)}
+.grp h3 small{font-weight:500;color:var(--t3);font-size:12.5px}
+.row{display:grid;grid-template-columns:36px 1fr 150px 1.2fr;gap:12px;padding:11px 16px;border-top:1px solid var(--line);align-items:start}
+.row:first-of-type{border-top:0}
+.row .n{color:var(--t3);font-variant-numeric:tabular-nums;font-size:13px;padding-top:2px}
+.row .f{font-weight:600}
+.row .c{color:var(--t2);font-size:14px}
+.row.hl{background:color-mix(in srgb,var(--n) 6%,transparent)}
+.empty{padding:14px 16px;color:var(--t3);font-size:14px}
+.rop{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:8px}
+.rop-head{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:6px}
+.btn{border:1px solid var(--line);background:var(--soft);color:var(--t1);border-radius:10px;padding:8px 14px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.q{border-top:1px solid var(--line);padding:16px 0;display:grid;grid-template-columns:40px 1fr;gap:10px}
+.q:first-of-type{border-top:0}
+.qn{width:30px;height:30px;border-radius:9px;background:var(--qb);color:var(--q);display:grid;place-items:center;font-weight:700;font-size:13px}
+.q h4{margin:3px 0 2px;font-size:15.5px}
+.q .ru{color:var(--t3);font-size:13px;margin:0 0 8px}
+.q .tz{background:var(--soft);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--t2)}
+.q .tz b{color:var(--t1)}
+.q .refs{font-size:12px;color:var(--t3);margin-top:6px}
+.tag-pri{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--nb);color:var(--n);margin-left:6px;vertical-align:2px}
+.tpl{white-space:pre-wrap;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px;font:13.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--t2);overflow-x:auto}
+footer{color:var(--t3);font-size:13px;padding:40px 0 60px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--t1);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;transition:.25s;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media (max-width:820px){
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .row{grid-template-columns:30px 1fr;gap:4px 10px}
+  .row .s,.row .c{grid-column:2}
+  .row .s{margin-top:4px}
+}
+@media print{
+  header.top,.theme,.btn{display:none}
+  body{background:#fff}
+  .grp,.rop{break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <span class="brand">Ilm CRM</span>
+  <nav class="nav"><a href="#summary">Итоги</a><a href="#list">Чек-лист</a><a href="#rop">Вопросы РОПу</a><a href="#tz">Шаблон ТЗ</a></nav>
+  <button class="theme" id="theme" type="button">Тема</button>
+</div></header>
+
+<main class="wrap">
+  <div class="hero" id="summary">
+    <div class="eyebrow">Ilm Markazi · переход отдела продаж</div>
+    <h1>amoCRM → Ilm CRM: что уже есть, а что нужно сделать</h1>
+    <p class="lead">70 функций amoCRM и их статус в нашей системе. Главное: пока amo остаётся «трубой» для лидов, звонков и роботов, всё работает, если Ilm CRM пишет обратно в amo этап, причину отказа и ответственного.</p>
+    <div class="meta">Состояние на 27.11.2026. Источник: аудит аккаунта amoCRM (только чтение) и код Ilm CRM. В браузере вручную не проверялось.</div>
+
+    <div class="kpis" id="kpis"></div>
+    <div class="bar" id="bar"></div>
+    <div class="meta" id="barnote"></div>
+
+    <div class="callout">
+      <h3>До перехода обязательно</h3>
+      <ol>
+        <li><b>№66</b> — включить запись Ilm CRM → amo (этап, отказ, ответственный). Готово в коде, ждёт выкатки и пробного запуска.</li>
+        <li><b>№30</b> — заполнить внутренние номера Sipuni для каждого менеджера и сделать тестовый звонок.</li>
+        <li><b>№38</b> — решить, где менеджеры отвечают в чатах (в amo ≥ 4000 входящих за 7 дней).</li>
+        <li><b>№67</b> — назначить день, когда выключаем тестовый режим Ilm CRM.</li>
+      </ol>
+    </div>
+  </div>
+
+  <section id="list">
+    <h2>Чек-лист</h2>
+    <p class="sub">Нажмите на карточку со статусом вверху, чтобы оставить только эти пункты.</p>
+    <div class="legend" id="legend"></div>
+    <div id="groups"></div>
+  </section>
+
+  <section id="rop">
+    <h2>Savollar ROP uchun — bugun javob kerak</h2>
+    <p class="sub">Вопросы РОПу на сегодня. По каждому — какое ТЗ нужно от него, чтобы мы сделали оставшиеся пункты. Номера в скобках — пункты чек-листа.</p>
+    <div class="rop">
+      <div class="rop-head">
+        <b id="qcount"></b>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn pri" id="copyq" type="button">Savollarni nusxalash</button>
+          <button class="btn" id="copytpl" type="button">TZ shablonini nusxalash</button>
+        </div>
+      </div>
+      <div id="qs"></div>
+    </div>
+  </section>
+
+  <section id="tz">
+    <h2>TZ shabloni</h2>
+    <p class="sub">Шаблон ТЗ: РОП заполняет по одному на каждый вопрос и присылает в Telegram.</p>
+    <div class="tpl" id="tpl"></div>
+  </section>
+
+  <footer>Ilm Markazi · Ilm CRM · 27.11.2026. В отчёте нет персональных данных клиентов, ключей и адресов интеграций.</footer>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const S = {
+  y:  {e:"✅", t:"Есть"},
+  p:  {e:"🟡", t:"Частично / тест"},
+  n:  {e:"❌", t:"Нет, внедрить"},
+  nq: {e:"❌❓", t:"Нет + вопрос"},
+  q:  {e:"❓", t:"Вопрос"},
+  na: {e:"➖", t:"Не нужно"}
+};
+const COLORS = {y:"var(--y)",p:"var(--p)",n:"var(--n)",nq:"var(--n)",q:"var(--q)",na:"var(--na)"};
+const G = [
+ ["Сделки и воронки", [
+  [1,"Воронка «Продажа» (10 этапов)","y","Канбан с теми же этапами"],
+  [2,"Ещё 10 воронок: До Академ, Академ, Второй и Третий месяц, Переподажа, Набор группы, Найм, Kasbly, Маркетплейс, Bepul kurs","nq","В Ilm CRM только «Продажа». Какие воронки нужны менеджерам?"],
+  [3,"Перетаскивание сделки по этапам","y",""],
+  [4,"Список и таблица сделок","y","Вид «Ro'yxat»"],
+  [5,"Создание сделки вручную","y","С проверкой дубля по телефону"],
+  [6,"Поиск","y",""],
+  [7,"Фильтры","p","По ответственному, тегу и быстрые. Сохранённых фильтров нет"],
+  [8,"Массовые действия","y","Этап, отказ, ответственный, задача, вернуть в работу"],
+  [9,"Причины отказа (14)","y","Из справочника amo"],
+  [10,"Смена ответственного","p","Только РОП. Сделано, ждёт выкатки"],
+  [11,"История этапов сделки","y",""],
+  [12,"Отмена действия","y","В amo такого нет"],
+  [13,"Теги","p","Видны, по ним работает фильтр. Ставить и снимать из Ilm CRM нельзя"],
+  [14,"Доп. поля сделки (127 в amo)","p","В карточке ключевые: источник, кампания, Uzum, Alif, тариф. Какие ещё нужны?"],
+  [15,"Бюджет (сумма)","y",""],
+  [16,"Неразобранное","na","Пока amo «труба», его разбирает amo"],
+  [17,"Файлы в карточке","p","Только чек оплаты (фото или PDF)"],
+  [18,"Другие сделки этого же клиента","y",""]
+ ]],
+ ["Контакты и прочие сущности", [
+  [19,"Контакт с несколькими телефонами","y",""],
+  [20,"Отдельный раздел «Контакты»","n","Контакт есть только внутри сделки"],
+  [21,"Компании","na","В amo 4 поля, не используются"],
+  [22,"Покупатели","na","В amo выключены"],
+  [23,"Каталоги и товары","na","В amo пусто"]
+ ]],
+ ["Задачи", [
+  [24,"Задачи с типами (11 в amo: «Связаться», «Ko'tarmadi 1/2/3-kun», «Qayta qo'ng'iroq» и др.)","y",""],
+  [25,"Календарь задач","y","Раздел «Vazifa»"],
+  [26,"«Мой день» и просроченные задачи","y",""],
+  [27,"Результат звонка или задачи","y",""],
+  [28,"Автозадача «позвонить за 10 минут» на новый лид","p","Работает в тестовом режиме"],
+  [29,"Автозакрытие задачи после звонка","y","По исходящему звонку в Sipuni"]
+ ]],
+ ["Звонки", [
+  [30,"Исходящие через Sipuni (≈14 000 за 7 дней)","p","Звонок кнопкой есть. Внутренние номера менеджеров не заполнены, тестового звонка не было"],
+  [31,"Входящие (≈970 за 7 дней)","p","События Sipuni приходят. На ответственного звонок направляет Sipuni через amo — проверить схему"],
+  [32,"Запись звонка в карточке","p","Ссылка есть. Прослушивания внутри CRM нет"],
+  [33,"Пропущенный → задача «перезвонить»","y",""],
+  [34,"Sipuni создаёт сделку на новый номер","na","Делает amo, продолжит работать"],
+  [35,"ИИ-разбор звонка (расшифровка и оценка)","p","Есть в карточке ученика. Для сделки — вопрос"],
+  [36,"Виджет «Мои звонки» (≈20 звонков за 7 дней)","q","Отключить?"],
+  [37,"Рейтинг и отчёты по звонкам","y","Звонки через amo"]
+ ]],
+ ["Чаты и сообщения", [
+  [38,"Входящие чаты через Wazzup (≥ 4000 за 7 дней)","nq","Самый большой пробел: чаты Ilm CRM пока демо. Пока отвечают в amo?"],
+  [39,"Шаблоны сообщений (9 в amo)","y","РОП правит сам"],
+  [40,"Salesbot «Zakrit besedi»","nq","Остаётся в amo. Нужен ли свой?"],
+  [41,"SMS «не взял»","p","Кнопка в тестовом режиме. После записи в amo SMS шлёт робот amo"],
+  [42,"Telegram-бот школы в чатах","p","Подключение есть, работает как демо"],
+  [43,"Примечания в сделке","y",""],
+  [44,"Email","q","Используется ли вообще?"]
+ ]],
+ ["Автоматизация и интеграции", [
+  [45,"Распределение лидов (Taqsimlovchi)","p","Работает, но занятость берёт по этапу amo — нужен №66"],
+  [46,"Контроль дублей","p","В Ilm CRM задача «возможный дубль». Объединения дублей нет"],
+  [47,"Роботы на «Успешно»: LC-UP, перенос в «До Академ», Salesbot","na","Остаются в amo, сработают через №66"],
+  [48,"≈25 вебхуков amo: Sipuni ×7, Wazzup, Puzzlebot ×3, emfy, bizandsoft, roydis, Zapier, NOVA, uzum-checker, salesai, Facebook, нормализатор телефонов","q","Остаются в amo. Какие из них ещё живые?"],
+  [49,"Автоматический «Успешно» по таблице продаж","p","В тестовом режиме"],
+  [50,"Нормализация телефонов","na","Остаётся в amo"],
+  [51,"Виджеты Albato, Webjack, Tilda","q","Используются?"]
+ ]],
+ ["Лиды и источники", [
+  [52,"Facebook Lead Ads → amo","y","Наш вебхук"],
+  [53,"Добор потерянных лидов","y",""],
+  [54,"UTM и данные трекинга","p","Источник и кампания видны в карточке"],
+  [55,"Приём лидов напрямую в Ilm CRM, без amo","n","Сейчас только теневая сверка. Не срочно, пока amo «труба»"],
+  [56,"Meta CAPI по этапам","p","Идёт через виджет amo. Свой вариант — только тест"]
+ ]],
+ ["Аналитика и отчёты", [
+  [57,"Воронка и конверсии","y",""],
+  [58,"Отчёт по причинам отказа","y",""],
+  [59,"Рейтинг менеджеров","y",""],
+  [60,"Скорость первого звонка","y",""],
+  [61,"Утренний и недельный отчёт","y",""],
+  [62,"Отчёты продаж, когорты, акции, Telegram-реклама","y","Считают по этапам amo — нужен №66"],
+  [63,"Зарплата, бонусы, челленджи, ТВ-экран","y","В amo такого нет"]
+ ]],
+ ["Пользователи, права, переход", [
+  [64,"Роли (8 в amo) и отделы (9 групп)","p","В Ilm CRM роли проще: менеджер, РОП, ассистент. Нужны ли отделы со своими руководителями?"],
+  [65,"Новый менеджер","p","Логины выдаёт бот, но менеджера надо заводить и в amo: связь по имени"],
+  [66,"Запись этапа, отказа и ответственного обратно в amo","p","Готово в коде, режим «выкл». Ждёт выкатки и пробного запуска"],
+  [67,"Тестовый режим Ilm CRM","q","В какой день выключаем?"],
+  [68,"Обновление из amo раз в 10 минут","y","Задержка до 10 минут"],
+  [69,"Журнал действий","y",""],
+  [70,"Мобильная версия","y","Mini App в Telegram"]
+ ]]
+];
+const KEY = new Set([30,38,66,67]);
+
+const Q = [
+ {u:"Menejerlar mijozlar chatiga qayerda javob beradi: amoCRM'da qoladimi yoki Ilm CRM'ga o'tamizmi? Qaysi kanallar: WhatsApp, Telegram, Instagram?",
+  r:"Где менеджеры отвечают в чатах и какие каналы нужны",
+  tz:"Kanallar ro'yxati, har kanal bo'yicha kunlik xabarlar soni, kim javob beradi, javob berish muddati (masalan, 5 daqiqa).", refs:[38,42], pri:true},
+ {u:"Har bir menejerning Sipuni ichki raqami qaysi? To'liq ro'yxat kerak.",
+  r:"Внутренние номера Sipuni всех менеджеров",
+  tz:"Jadval: menejer F.I.Sh. — Sipuni ichki raqami — ishlaydigan telefon (SIP yoki ilova).", refs:[30], pri:true},
+ {u:"Kiruvchi qo'ng'iroq qayerga tushadi: mas'ul menejergami, umumiy navbatgami? Ish vaqtidan tashqarida nima bo'ladi?",
+  r:"Схема входящих звонков",
+  tz:"Kiruvchi qo'ng'iroq sxemasi: kim birinchi, kim keyin, necha soniyadan keyin o'tadi, kechqurun va dam olish kunlari.", refs:[31,33], pri:true},
+ {u:"Test rejimini qaysi kuni o'chiramiz? Sinov uchun 5–10 ta bitimni va 1–2 menejerni tanlang.",
+  r:"День выключения тестового режима и пилот на 5–10 сделках",
+  tz:"Sana va soat, pilot menejerlar ismlari, pilot qancha kun davom etadi, nima bo'lsa to'xtatamiz.", refs:[66,67], pri:true},
+ {u:"Ilm CRM'da qaysi voronkalar kerak? Hozir faqat «Продажа» bor.",
+  r:"Какие воронки кроме «Продажи» нужны в Ilm CRM",
+  tz:"Har voronka uchun: kim ishlaydi, bosqichlar ro'yxati, bitim qaysi voronkadan qaysiga o'tadi.", refs:[2]},
+ {u:"Bitim kartochkasida yana qaysi maydonlar ko'rinishi va tahrirlanishi kerak?",
+  r:"Какие ещё поля нужны в карточке сделки",
+  tz:"Maydonlar ro'yxati: nomi, turi (matn, raqam, sana, tanlov), majburiymi, qaysi bosqichda to'ldiriladi.", refs:[14]},
+ {u:"Menejerlar teg qo'yishi va olib tashlashi kerakmi? Qaysi teglar?",
+  r:"Нужно ли ставить теги и какие",
+  tz:"Teglar ro'yxati va har biri nimani bildiradi; kim qo'yadi.", refs:[13]},
+ {u:"Qanday filtrlarni saqlab qo'yish kerak (masalan, «bugun qo'ng'iroq qilinmaganlar»)?",
+  r:"Какие фильтры сохранить",
+  tz:"3–7 ta filtr: nomi va shartlari.", refs:[7]},
+ {u:"Mas'ulni kim o'zgartira oladi: faqat ROPmi yoki bo'lim rahbarlari ham?",
+  r:"Кто может менять ответственного",
+  tz:"Rollar ro'yxati va har biri nima qila oladi.", refs:[10,64]},
+ {u:"Bo'limlar (masalan, «Отдел продаж | …») Ilm CRM'da kerakmi? Bo'lim rahbari nimani ko'radi?",
+  r:"Нужны ли отделы и что видит руководитель отдела",
+  tz:"Bo'limlar, rahbarlari, har bo'lim a'zolari; rahbar faqat o'z bo'limini ko'radimi.", refs:[64]},
+ {u:"Yangi menejer qanday qo'shiladi va ketgan menejerning bitimlari kimga o'tadi?",
+  r:"Порядок добавления нового менеджера и передачи сделок ушедшего",
+  tz:"Bosqichma-bosqich tartib: kim qo'shadi, kim ruxsat beradi, bitimlar qanday taqsimlanadi.", refs:[65]},
+ {u:"Lid taqsimlash qoidalari o'zgaradimi? Kim «band» hisoblanadi?",
+  r:"Правила распределения лидов",
+  tz:"Qoidalar: navbat tartibi, band holat, ish vaqti, navbatchi.", refs:[45]},
+ {u:"Dublikat bitimlar bilan nima qilamiz: birlashtiramizmi yoki yopamizmi? Qaysi bitim qoladi?",
+  r:"Что делать с дублями",
+  tz:"Qoida: dublikat qanday aniqlanadi (telefon, ism), qaysi bitim asosiy, qaysi ma'lumot ko'chiriladi.", refs:[46]},
+ {u:"«Zakrit besedi» Salesbot nima qiladi va u kerakmi?",
+  r:"Что делает Salesbot и нужен ли он",
+  tz:"Bot qachon ishga tushadi, mijozga nima yozadi, natija nima bo'ladi.", refs:[40]},
+ {u:"«Ko'tarmadi» SMS matni va qachon yuboriladi — hozirgidek qoladimi?",
+  r:"Текст и момент SMS «не взял»",
+  tz:"SMS matni, nechanchi urinishdan keyin, kuniga necha marta ko'pi bilan.", refs:[41]},
+ {u:"Vazifa turlari (11 ta) hammasi kerakmi? Qaysilari ortiqcha, qaysilari yetishmaydi?",
+  r:"Нужны ли все 11 типов задач",
+  tz:"Vazifa turlari ro'yxati: nomi, qachon qo'yiladi, muddati.", refs:[24]},
+ {u:"Rad etish sabablari (14 ta) to'g'rimi? Yangi sabab kerakmi?",
+  r:"Верен ли список причин отказа",
+  tz:"Yakuniy ro'yxat; qaysi sabab bilan bitim qayta ochilishi mumkin.", refs:[9]},
+ {u:"Kartochkada qaysi fayllar kerak (chekdan tashqari): pasport, shartnoma, skrinshot?",
+  r:"Какие файлы нужны в карточке",
+  tz:"Fayl turlari va kim yuklaydi.", refs:[17]},
+ {u:"Qo'ng'iroqni sun'iy intellekt tahlili bitim kartochkasida ham kerakmi? Nimani baholash kerak?",
+  r:"Нужен ли ИИ-разбор звонка в сделке и по каким критериям",
+  tz:"Baholash mezonlari (salomlashish, ehtiyojni aniqlash, e'tiroz, yopish), har biri necha ball.", refs:[35]},
+ {u:"Alohida «Kontaktlar» bo'limi kerakmi yoki bitim ichidagi kontakt yetarlimi?",
+  r:"Нужен ли отдельный раздел «Контакты»",
+  tz:"Kontaktlar bo'limida nima ko'rinishi va nima qilish kerak.", refs:[20]},
+ {u:"«Moi zvonki» vidjeti, Email, Albato, Webjack, Tilda ishlatiladimi? Ishlatilmasa o'chiramiz.",
+  r:"Используются ли «Мои звонки», Email, Albato, Webjack, Tilda",
+  tz:"Har biri bo'yicha: ishlatiladi / ishlatilmaydi, kim ishlatadi.", refs:[36,44,51]},
+ {u:"Puzzlebot, emfy, bizandsoft, roydis, NOVA, salesai integratsiyalari nima uchun ulangan va hozir ishlaydimi?",
+  r:"Для чего подключены интеграции и живы ли они",
+  tz:"Har integratsiya: nima qiladi, kim ulagan, kerak / kerak emas.", refs:[48]}
+];
+
+const TPL = `TZ № ___  (savol raqami: ___)
+Mavzu:
+Kim so'rayapti (ROP / bo'lim):
+Hozir qanday ishlaydi (amoCRM'da):
+Qanday bo'lishi kerak (Ilm CRM'da):
+Kim ishlatadi (menejer / ROP / assistent):
+Qoidalar va istisnolar:
+Misol (1–2 ta real holat, mijoz ma'lumotlarisiz):
+Qachongacha kerak:
+Qanday tekshiramiz (tayyor deb qachon aytamiz):`;
+
+let filt = null;
+const all = G.flatMap(g => g[1]);
+const cnt = k => all.filter(r => r[2] === k).length;
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function renderKpis(){
+  const order = ["y","p","n","nq","q","na"];
+  document.getElementById("kpis").innerHTML = order.map(k =>
+    `<button type="button" class="kpi ${filt===k?'on':''}" data-k="${k}"><b style="color:${COLORS[k]}">${cnt(k)}</b><span>${S[k].e} ${S[k].t}</span></button>`).join("");
+  document.getElementById("bar").innerHTML = order.map(k => `<i style="width:${cnt(k)/all.length*100}%;background:${COLORS[k]}" title="${S[k].t}: ${cnt(k)}"></i>`).join("");
+  document.getElementById("barnote").textContent = `Всего ${all.length} пунктов. Уже есть ${cnt("y")}, частично или в тесте ${cnt("p")}, нужно внедрить ${cnt("n")+cnt("nq")}, ждут ответа ${cnt("q")+cnt("nq")}.`;
+  document.querySelectorAll(".kpi").forEach(b => b.onclick = () => { filt = filt === b.dataset.k ? null : b.dataset.k; renderKpis(); renderGroups(); });
+}
+function renderGroups(){
+  document.getElementById("legend").innerHTML = Object.entries(S).map(([k,v]) => `<span class="st ${k}">${v.e} ${v.t}</span>`).join("");
+  document.getElementById("groups").innerHTML = G.map(([name, rows]) => {
+    const vis = rows.filter(r => !filt || r[2] === filt);
+    const ok = rows.filter(r => r[2] === "y").length;
+    return `<div class="grp"><h3>${esc(name)} <small>есть ${ok} из ${rows.length}</small></h3>` +
+      (vis.length ? vis.map(r => `<div class="row ${KEY.has(r[0])?'hl':''}" id="i${r[0]}"><div class="n">${r[0]}</div><div class="f">${esc(r[1])}</div><div class="s"><span class="st ${r[2]}">${S[r[2]].e} ${S[r[2]].t}</span></div><div class="c">${esc(r[3])}</div></div>`).join("")
+        : `<div class="empty">В этом разделе таких пунктов нет</div>`) + `</div>`;
+  }).join("");
+}
+function renderQs(){
+  document.getElementById("qcount").textContent = `${Q.length} ta savol · birinchi 4 tasi — bugunoq`;
+  document.getElementById("qs").innerHTML = Q.map((q,i) => `<div class="q"><div class="qn">${i+1}</div><div>
+    <h4>${esc(q.u)}${q.pri?'<span class="tag-pri">BUGUN</span>':''}</h4>
+    <p class="ru">${esc(q.r)}</p>
+    <div class="tz"><b>TZ'da nima bo'lishi kerak:</b> ${esc(q.tz)}</div>
+    <div class="refs">Чек-лист: ${q.refs.map(n => `<a href="#i${n}">№${n}</a>`).join(", ")}</div></div></div>`).join("");
+  document.getElementById("tpl").textContent = TPL;
+}
+function toast(t){ const el = document.getElementById("toast"); el.textContent = t; el.classList.add("on"); setTimeout(() => el.classList.remove("on"), 1800); }
+async function copy(text){
+  try { await navigator.clipboard.writeText(text); toast("Nusxalandi"); }
+  catch(e){ const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try{document.execCommand("copy"); toast("Nusxalandi");}catch(_){toast("Nusxalab bo'lmadi");} ta.remove(); }
+}
+document.getElementById("copyq").onclick = () => copy("ROP uchun savollar (bugun javob kerak)\n\n" + Q.map((q,i) => `${i+1}. ${q.u}${q.pri?' [BUGUN]':''}\n   TZ: ${q.tz}`).join("\n\n") + "\n\nTZ shabloni:\n" + TPL + "\n\n" + location.href);
+document.getElementById("copytpl").onclick = () => copy(TPL);
+
+const root = document.documentElement;
+try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch(e) {}
+document.getElementById("theme").onclick = () => {
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch(e) {}
+};
+renderKpis(); renderGroups(); renderQs();
+</script>
+</body>
+</html>
