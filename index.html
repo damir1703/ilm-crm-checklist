@@ -72,14 +72,14 @@ h2{font-size:24px;margin:0 0 6px;letter-spacing:-.01em}
 .rop-head{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:6px}
 .btn{border:1px solid var(--line);background:var(--soft);color:var(--t1);border-radius:10px;padding:8px 14px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
-.q{border-top:1px solid var(--line);padding:16px 0;display:grid;grid-template-columns:40px 1fr;gap:10px}
-.q:first-of-type{border-top:0}
+.qq{border-top:1px solid var(--line);padding:16px 0;display:grid;grid-template-columns:40px 1fr;gap:10px}
+.qq:first-of-type{border-top:0}
 .qn{width:30px;height:30px;border-radius:9px;background:var(--qb);color:var(--q);display:grid;place-items:center;font-weight:700;font-size:13px}
-.q h4{margin:3px 0 2px;font-size:15.5px}
-.q .ru{color:var(--t3);font-size:13px;margin:0 0 8px}
-.q .tz{background:var(--soft);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--t2)}
-.q .tz b{color:var(--t1)}
-.q .refs{font-size:12px;color:var(--t3);margin-top:6px}
+.qq h4{margin:3px 0 2px;font-size:15.5px}
+.qq .ru{color:var(--t3);font-size:13px;margin:0 0 8px}
+.qq .tz{background:var(--soft);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--t2)}
+.qq .tz b{color:var(--t1)}
+.qq .refs{font-size:12px;color:var(--t3);margin-top:6px}
 .tag-pri{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--nb);color:var(--n);margin-left:6px;vertical-align:2px}
 .tpl{white-space:pre-wrap;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px;font:13.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--t2);overflow-x:auto}
 footer{color:var(--t3);font-size:13px;padding:40px 0 60px}
@@ -366,7 +366,7 @@ function renderGroups(){
 }
 function renderQs(){
   document.getElementById("qcount").textContent = `${Q.length} ta savol · birinchi 4 tasi — bugunoq`;
-  document.getElementById("qs").innerHTML = Q.map((q,i) => `<div class="q"><div class="qn">${i+1}</div><div>
+  document.getElementById("qs").innerHTML = Q.map((q,i) => `<div class="qq"><div class="qn">${i+1}</div><div>
     <h4>${esc(q.u)}${q.pri?'<span class="tag-pri">BUGUN</span>':''}</h4>
     <p class="ru">${esc(q.r)}</p>
     <div class="tz"><b>TZ'da nima bo'lishi kerak:</b> ${esc(q.tz)}</div>
@@ -389,6 +389,7 @@ document.getElementById("theme").onclick = () => {
   try { localStorage.setItem("theme", root.dataset.theme); } catch(e) {}
 };
 renderKpis(); renderGroups(); renderQs();
+if (location.hash) { const t = document.querySelector(location.hash); if (t) t.scrollIntoView(); }
 </script>
 </body>
 </html>
