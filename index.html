@@ -491,7 +491,7 @@ function renderGroups(){
   }).join("");
 }
 function renderQs(){
-  document.getElementById("qcount").textContent = LANG === "uz" ? `${Q.length} ta savol · ${Q.filter(q => q.a).length} tasiga javob bor` : `${Q.length} вопрос · на ${Q.filter(q => q.a).length} есть ответ`;
+  document.getElementById("qcount").textContent = LANG === "uz" ? `${Q.length} ta savol · ${Q.filter(q => q.a).length} tasiga javob bor` : `Вопросов: ${Q.length} · ответ есть на ${Q.filter(q => q.a).length}`;
   document.getElementById("qs").innerHTML = Q.map((q,i) => `<div class="qq"><div class="qn">${i+1}</div><div>
     <h4>${esc(q.u)}${q.pri?`<span class="tag-pri">${LANG === "uz" ? "BUGUN" : "СЕГОДНЯ"}</span>`:''}</h4>
     <p class="ru">${esc(q.r)}</p>
